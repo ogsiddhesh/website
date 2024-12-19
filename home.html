@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            background-color: #282c34;
+            color: #61dafb;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            cursor: url('mice.png'), auto; /* Update with the path to your Linux cursor image */
+        }
+
+        header {
+            background-color: #20232a;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .left-header h1 {
+            margin: 0;
+            color: #61dafb;
+            user-select: none; /* Prevents text selection */
+            cursor: pointer; /* Shows pointer cursor to indicate it's clickable */
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #61dafb;
+            font-weight: bold;
+        }
+
+        .hero {
+            position: relative;
+            background: url('bcimage.png') no-repeat center center/cover; /* Update with the path to your background image */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero .profile-pic {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+        }
+
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            color: #fff;
+            text-align: center;
+            transition: opacity 0.2s ease;
+        }
+
+        main {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #20232a;
+            padding: 1rem;
+            text-align: center;
+            color: #bbb;
+        }
+
+        .footer .social-links a {
+            color: #61dafb;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        form label {
+            text-align: left;
+        }
+
+        form input, form textarea, form button {
+            padding: 0.5rem;
+            font-size: 1rem;
+        }
+
+        form button {
+            background-color: #61dafb;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #50b4d7;
+        }
+
+        .glow-bg {
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            filter: blur(30px);
+            pointer-events: none;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            z-index: -1;
+        }
+
+        /* Popup styling */
+        .popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .popup.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="left-header">
+            <h1 onclick="location.reload()">Siddesh Chaube</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero" id="home">
+            <img src="backfield.png" alt="My Photo" class="profile-pic">
+            <div class="glassmorphism" ondblclick="this.style.opacity='0'">
+                <h1>Welcome to My Portfolio</h1>
+                <p>Hello! I'm Siddesh Chaube, a passionate and innovative developer with a knack for turning ideas into reality through code. With a solid foundation in various tech stacks and a portfolio of diverse projects, I specialize in creating efficient and scalable solutions.<br><br>
+
+                    Expertise:<br><br>
+                    Python & Python Flask: Building robust backend systems and RESTful APIs.<br><br>
+                    
+                    MongoDB: Leveraging NoSQL databases for dynamic and scalable applications.<br><br>
+                    
+                    Java & Kotlin: Crafting powerful applications for both web and mobile platforms.<br><br>
+                    
+                    SQL: Designing and managing 
+                    
+                     database structures<br><br><br>
+                    Let's Connect:<br><br>
+                    I'm always excited to collaborate on new and challenging projects. Feel free to explore my portfolio and get in touch if you have any exciting opportunities or just want to talk tech!<br><br>
+                    ""so if you double click on the texts it will disappear and you can see the background images and to see text again click on my name again to refresh the page and it will appear again""</p>
+                </div>
+        </section>
+        <section class="contact">
+            <h2>Contact Me</h2>
+            <form id="contactForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 siddhesh-chaube. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://github.com/ogsiddhesh/ogsiddhesh">GitHub</a>
+            <a href="https://in.linkedin.com/in/siddhesh-chaube">LinkedIn</a>
+            <a href="https://www.instagram.com/og_siddhesh?igsh=bTc0djZzcDYwbGt3">Instagram</a>
+        </div>
+    </footer>
+    <div class="glow-bg" id="glowBg"></div>
+    <div class="popup" id="popup">
+        Thank you for submitting your details! will get back to you shortly.
+    </div>
+    <script>
+        // JavaScript to handle background glow effect
+        document.addEventListener('mousemove', function (e) {
+            const glowBg = document.getElementById('glowBg');
+            glowBg.style.left = e.pageX + 'px';
+            glowBg.style.top = e.pageY + 'px';
+            glowBg.style.opacity = 1;
+        });
+
+        document.addEventListener('mouseout', function () {
+            const glowBg = document.getElementById('glowBg');
+            glowBg.style.opacity = 0;
+        });
+
+        // JavaScript to handle form submission and popup message
+        const form = document.getElementById('contactForm');
+        const popup = document.getElementById('popup');
+        
+        form.addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent the form from submitting normally
+            popup.classList.add('show'); // Show the popup
+            setTimeout(() => {
+                popup.classList.remove('show'); // Hide the popup after 3 seconds
+                form.reset(); // Reset the form fields
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

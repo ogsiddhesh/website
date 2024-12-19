@@ -1,0 +1,210 @@
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>My Portfolio</title>
+     <style>
+         body {
+             background-color: #282c34;
+             color: #61dafb;
+             font-family: 'Courier New', Courier, monospace;
+             margin: 0;
+             padding: 0;
+             cursor: url('mice.png'), auto; /* Update with the path to your Linux cursor image */
+             transition: background-color 0.5s, color 0.5s;
+         }
+ 
+         .dark-mode {
+             background-color: #121212;
+             color: #e0e0e0;
+         }
+ 
+         .theme-toggle {
+             background: #61dafb;
+             color: #282c34;
+             border: none;
+             padding: 0.5rem 1rem;
+             cursor: pointer;
+             border-radius: 5px;
+         }
+ 
+         .theme-toggle:hover {
+             background: #50b4d7;
+         }
+ 
+         header {
+             background-color: #20232a;
+             padding: 1rem;
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+         }
+ 
+         header .left-header h1 {
+             margin: 0;
+             color: #61dafb;
+             user-select: none; /* Prevents text selection */
+             cursor: pointer; /* Shows pointer cursor to indicate it's clickable */
+         }
+ 
+         nav ul {
+             list-style: none;
+             padding: 0;
+             display: flex;
+             gap: 1rem;
+         }
+ 
+         nav ul li a {
+             text-decoration: none;
+             color: #61dafb;
+             font-weight: bold;
+         }
+ 
+         .hero {
+             position: relative;
+             height: 90vh;
+             display: flex;
+             align-items: center;
+             justify-content: space-around;
+             padding: 2rem;
+             box-sizing: border-box;
+             overflow: hidden; /* Hide overflowing content */
+         }
+ 
+         .hero .description {
+             max-width: 50%;
+             overflow-y: auto; /* Enable vertical scroll */
+             max-height: 80vh; /* Set max height */
+             padding-right: 1rem; /* Padding to avoid text touching the scroll bar */
+         }
+ 
+         .hero .profile-pic {
+             border-radius: 50%;
+             width: 300px;
+             height: 300px;
+             background: url('backfield.png') no-repeat center center/cover; /* Update with the path to your profile picture */
+             box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+         }
+ 
+         .glassmorphism {
+             background: rgba(255, 255, 255, 0.1);
+             border-radius: 10px;
+             padding: 20px;
+             backdrop-filter: blur(10px);
+             color: #fff;
+             text-align: left;
+             transition: opacity 0.2s ease;
+             max-height: 100%;
+         }
+ 
+         main {
+             padding: 2rem;
+             text-align: center;
+         }
+ 
+         footer {
+             background-color: #20232a;
+             padding: 1rem;
+             text-align: center;
+             color: #bbb;
+         }
+ 
+         .footer .social-links a {
+             color: #61dafb;
+             text-decoration: none;
+             margin: 0 0.5rem;
+         }
+ 
+         .glow-bg {
+             position: fixed;
+             width: 200px;
+             height: 200px;
+             background: rgba(255, 255, 255, 0.1);
+             border-radius: 50%;
+             filter: blur(30px);
+             pointer-events: none;
+             transition: transform 0.2s ease, opacity 0.2s ease;
+             transform: translate(-50%, -50%);
+             opacity: 0;
+             z-index: -1;
+         }
+     </style>
+ </head>
+ <body>
+     <header>
+         <div class="left-header">
+             <h1 onclick="location.reload()">Siddesh Chaube</h1>
+         </div>
+         <nav>
+             <ul>
+                 <li><a href="home.html">Home</a></li>
+                 <li><a href="about.html">About</a></li>
+                 <li><a href="projects.html">Projects</a></li>
+                 <li><a href="services.html">Services</a></li>
+                 <li><a href="contact.html">Contact</a></li>
+                 <li><button id="theme-toggle" class="theme-toggle">Dark Mode</button></li>
+             </ul>
+         </nav>
+     </header>
+     <main>
+         <section class="hero" id="home">
+             <div class="description">
+                 <div class="glassmorphism" ondblclick="this.style.opacity='0'">
+                     <h1>Hello! I'm Siddesh Chaube</h1>
+                     <p>A passionate software engineering student with a focus on developing efficient, scalable solutions. I have been programming for the past 5 years, tackling complex coding problems and optimizing algorithms. I'm excited to bring my skills and passion to real-world projects.</p>
+                     <p>Expertise:</p>
+                     <ul>
+                         <li><strong>Python & Python Flask:</strong> Building robust backend systems and RESTful APIs.</li>
+                         <li><strong>MongoDB:</strong> Leveraging NoSQL databases for dynamic and scalable applications.</li>
+                         <li><strong>Java & Kotlin:</strong> Crafting powerful applications for both web and mobile platforms.</li>
+                         <li><strong>SQL:</strong> Designing and managing complex database structures.</li>
+                     </ul></div>
+             </div>
+             <div class="profile-pic" onclick="this.classList.toggle('dark-mode')"></div>
+         </section>
+     </main>
+     <footer>
+         <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+         <div class="social-links">
+             <a href="your-github-link">GitHub</a>
+             <a href="your-linkedin-link">LinkedIn</a>
+             <a href="your-twitter-link">Twitter</a>
+         </div>
+     </footer>
+     <div class="glow-bg" id="glowBg"></div>
+     <script>
+         document.getElementById('theme-toggle').addEventListener('click', function() {
+             document.body.classList.toggle('dark-mode');
+         });
+ 
+         // JavaScript to handle background glow effect
+         document.addEventListener('mousemove', function (e) {
+             const glowBg = document.getElementById('glowBg');
+             glowBg.style.left = e.pageX + 'px';
+             glowBg.style.top = e.pageY + 'px';
+             glowBg.style.opacity = 1;
+         });
+ 
+         document.addEventListener('mouseout', function () {
+             const glowBg = document.getElementById('glowBg');
+             glowBg.style.opacity = 0;
+         });
+ 
+         // JavaScript to handle form submission and popup message
+         const form = document.getElementById('contactForm');
+         const popup = document.getElementById('popup');
+ 
+         form.addEventListener('submit', function (e) {
+             e.preventDefault(); // Prevent the form from submitting normally
+             popup.classList.add('show'); // Show the popup
+             setTimeout(() => {
+                 popup.classList.remove('show'); // Hide the popup after 3 seconds
+                 form.reset(); // Reset the form fields
+             }, 3000);
+         });
+     </script>
+ </body>
+ </html>
+ 
