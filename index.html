@@ -12,7 +12,7 @@
              font-family: 'Courier New', Courier, monospace;
              margin: 0;
              padding: 0;
-             cursor: url('mice.png'), auto; /* Update with the path to your Linux cursor image */
+             cursor: url('mice.png'), auto; 
              transition: background-color 0.5s, color 0.5s;
          }
  
@@ -45,8 +45,8 @@
          header .left-header h1 {
              margin: 0;
              color: #61dafb;
-             user-select: none; /* Prevents text selection */
-             cursor: pointer; /* Shows pointer cursor to indicate it's clickable */
+             user-select: none; 
+             cursor: pointer; 
          }
  
          nav ul {
@@ -70,21 +70,21 @@
              justify-content: space-around;
              padding: 2rem;
              box-sizing: border-box;
-             overflow: hidden; /* Hide overflowing content */
+             overflow: hidden; 
          }
  
          .hero .description {
              max-width: 50%;
-             overflow-y: auto; /* Enable vertical scroll */
-             max-height: 80vh; /* Set max height */
-             padding-right: 1rem; /* Padding to avoid text touching the scroll bar */
+             overflow-y: auto; 
+             max-height: 80vh; 
+             padding-right: 1rem; 
          }
  
          .hero .profile-pic {
              border-radius: 50%;
              width: 300px;
              height: 300px;
-             background: url('backfield.png') no-repeat center center/cover; /* Update with the path to your profile picture */
+             background: url('backfield.png') no-repeat center center/cover; 
              box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
          }
  
@@ -166,7 +166,7 @@
          </section>
      </main>
      <footer>
-         <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+         <p>&copy; Build by <b>Siddhesh Chaube</b></p>
          <div class="social-links">
              <a href="your-github-link">GitHub</a>
              <a href="your-linkedin-link">LinkedIn</a>
@@ -179,7 +179,7 @@
              document.body.classList.toggle('dark-mode');
          });
  
-         // JavaScript to handle background glow effect
+         //  handle background glow effect
          document.addEventListener('mousemove', function (e) {
              const glowBg = document.getElementById('glowBg');
              glowBg.style.left = e.pageX + 'px';
@@ -192,16 +192,16 @@
              glowBg.style.opacity = 0;
          });
  
-         // JavaScript to handle form submission and popup message
+         // popup message
          const form = document.getElementById('contactForm');
          const popup = document.getElementById('popup');
  
          form.addEventListener('submit', function (e) {
-             e.preventDefault(); // Prevent the form from submitting normally
-             popup.classList.add('show'); // Show the popup
+             e.preventDefault(); // Prevent form 
+             popup.classList.add('show'); 
              setTimeout(() => {
-                 popup.classList.remove('show'); // Hide the popup after 3 seconds
-                 form.reset(); // Reset the form fields
+                 popup.classList.remove('show'); 
+                 form.reset(); 
              }, 3000);
          });
      </script>
