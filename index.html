@@ -1,5 +1,7 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +14,7 @@
     <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
+
     <style>
         body {
             background-color: #282c34;
@@ -74,25 +77,27 @@
             height: 90vh;
             display: flex;
             align-items: center;
-            justify-content: space-around;
+            justify-content: center;
             padding: 2rem;
             box-sizing: border-box;
             overflow: hidden;
+            flex-direction: column;
+            text-align: center;
         }
 
         .hero .description {
-            max-width: 50%;
-            overflow-y: auto;
-            max-height: 80vh;
-            padding-right: 1rem;
+            max-width: 100%;
+            padding: 1rem;
+            margin-top: 1rem;
         }
 
         .hero .profile-pic {
             border-radius: 50%;
-            width: 300px;
-            height: 300px;
+            width: 250px;
+            height: 250px;
             background: url('backfield.png') no-repeat center center/cover;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+            margin-bottom: 1rem;
         }
 
         .glassmorphism {
@@ -103,12 +108,10 @@
             color: #fff;
             text-align: left;
             transition: opacity 0.2s ease;
-            max-height: 100%;
         }
 
         main {
             padding: 2rem;
-            text-align: center;
         }
 
         footer {
@@ -118,10 +121,23 @@
             color: #bbb;
         }
 
+        .footer .social-links {
+            margin-top: 1rem;
+        }
+
         .footer .social-links a {
-            color: #61dafb;
             text-decoration: none;
-            margin: 0 0.5rem;
+            margin: 0 1rem;
+        }
+
+        .social-links a img {
+            width: 30px;
+            height: 30px;
+            transition: transform 0.3s;
+        }
+
+        .social-links a img:hover {
+            transform: scale(1.2);
         }
 
         .glow-bg {
@@ -138,38 +154,25 @@
             z-index: -1;
         }
 
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 0.5rem;
-                margin-top: 1rem;
-            }
-
-            .hero {
-                flex-direction: column;
-                height: auto;
-                padding: 1rem;
-            }
-
-            .hero .description {
-                max-width: 100%;
-                margin-bottom: 1rem;
-            }
-
+        @media screen and (max-width: 768px) {
             .hero .profile-pic {
                 width: 200px;
                 height: 200px;
             }
+
+            .hero .description {
+                padding: 1rem;
+                font-size: 14px;
+                width: 100%;
+            }
+
+            footer .social-links a {
+                margin: 0 1rem;
+            }
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="left-header">
@@ -186,45 +189,44 @@
             </ul>
         </nav>
     </header>
+
     <main>
         <section class="hero" id="home">
+            <div class="profile-pic"></div>
             <div class="description">
                 <div class="glassmorphism" ondblclick="this.style.opacity='0'">
-                    <h1>Hello! I'm Sidhesh Chaube</h1>
-                    <p>A passionate software engineering student with a focus on developing efficient, scalable
-                        solutions. I have been programming for the past 5 years, tackling complex coding problems and
-                        optimizing algorithms. I'm excited to bring my skills and passion to real-world projects.</p>
+                    <h1>Hello! I'm Siddhesh Chaube</h1>
+                    <p>A passionate software engineering student with a focus on developing efficient, scalable solutions. I have been programming for the past 5 years, tackling complex coding problems and optimizing algorithms. I'm excited to bring my skills and passion to real-world projects.</p>
                     <p>Expertise:</p>
                     <ul>
-                        <li><strong>Python & Python Flask:</strong> Building robust backend systems and RESTful
-                            APIs.</li>
-                        <li><strong>MongoDB:</strong> Leveraging NoSQL databases for dynamic and scalable
-                            applications.</li>
-                        <li><strong>Java & Kotlin:</strong> Crafting powerful applications for both web and mobile
-                            platforms.</li>
+                        <li><strong>Python & Python Flask:</strong> Building robust backend systems and RESTful APIs.</li>
+                        <li><strong>MongoDB:</strong> Leveraging NoSQL databases for dynamic and scalable applications.</li>
+                        <li><strong>Java & Kotlin:</strong> Crafting powerful applications for both web and mobile platforms.</li>
                         <li><strong>SQL:</strong> Designing and managing complex database structures.</li>
                     </ul>
                 </div>
             </div>
-            <div class="profile-pic" onclick="this.classList.toggle('dark-mode')"></div>
         </section>
     </main>
+
     <footer>
         <p>&copy; Build by <b>Siddhesh Chaube</b></p>
         <div class="social-links">
-            <a href="https://github.com/ogsiddhesh">GitHub</a>
-            <a href="https://www.linkedin.com/search/results/people/?keywords=siddhesh%20chaube&origin=SWITCH_SEARCH_VERTICAL&sid=GGO">LinkedIn</a>
+            <a href="https://github.com/ogsiddhesh">Github</a>
+            <a href="https://www.linkedin.com/search/results/people/?keywords=siddhesh%20chaube&origin=SWITCH_SEARCH_VERTICAL&sid=GGO">Linkedin</a>
             <a href="https://www.instagram.com/og_siddhesh/">Instagram</a>
-            <a href="https://x.com/og_siddd">"X"</a>
+            <a href="https://x.com/og_siddd">X.com</a>
         </div>
     </footer>
+
     <div class="glow-bg" id="glowBg"></div>
+
     <script>
-        document.getElementById('theme-toggle').addEventListener('click', function () {
+        document.getElementById('theme-toggle').addEventListener('click', function() {
             document.body.classList.toggle('dark-mode');
         });
 
-        //  handle background glow effect
+        // handle background glow effect
         document.addEventListener('mousemove', function (e) {
             const glowBg = document.getElementById('glowBg');
             glowBg.style.left = e.pageX + 'px';
@@ -236,19 +238,7 @@
             const glowBg = document.getElementById('glowBg');
             glowBg.style.opacity = 0;
         });
-
-        // popup message
-        const form = document.getElementById('contactForm');
-        const popup = document.getElementById('popup');
-
-        form.addEventListener('submit', function (e) {
-            e.preventDefault(); // Prevent form 
-            popup.classList.add('show');
-            setTimeout(() => {
-                popup.classList.remove('show');
-                form.reset();
-            }, 3000);
-        });
     </script>
 </body>
+
 </html>
