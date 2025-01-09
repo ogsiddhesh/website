@@ -1,239 +1,379 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <style>
-        body {
-            background-color: #282c34;
-            color: #61dafb;
-            font-family: 'Courier New', Courier, monospace;
-            margin: 0;
-            padding: 0;
-            cursor: url('mice.png'), auto; 
-        }
-
-        header {
-            background-color: #20232a;
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        header .left-header h1 {
-            margin: 0;
-            color: #61dafb;
-            user-select: none; 
-            cursor: pointer; 
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            gap: 1rem;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: #61dafb;
-            font-weight: bold;
-        }
-
-        .hero {
-            position: relative;
-            background: url('bcimage.png') no-repeat center center/cover; 
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero .profile-pic {
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-        }
-
-        .glassmorphism {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 20px;
-            backdrop-filter: blur(10px);
-            color: #fff;
-            text-align: center;
-            transition: opacity 0.2s ease;
-        }
-
-        main {
-            padding: 2rem;
-            text-align: center;
-        }
-
-        footer {
-            background-color: #20232a;
-            padding: 1rem;
-            text-align: center;
-            color: #bbb;
-        }
-
-        .footer .social-links a {
-            color: #61dafb;
-            text-decoration: none;
-            margin: 0 0.5rem;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        form label {
-            text-align: left;
-        }
-
-        form input, form textarea, form button {
-            padding: 0.5rem;
-            font-size: 1rem;
-        }
-
-        form button {
-            background-color: #61dafb;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
-
-        form button:hover {
-            background-color: #50b4d7;
-        }
-
-        .glow-bg {
-            position: fixed;
-            width: 200px;
-            height: 200px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            filter: blur(30px);
-            pointer-events: none;
-            transition: transform 0.2s ease, opacity 0.2s ease;
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            z-index: -1;
-        }
-
-        
-        .popup {
-            display: none;
-            position: fixed;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            z-index: 1000;
-        }
-
-        .popup.show {
-            display: block;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="left-header">
-            <h1 onclick="location.reload()">Siddesh Chaube</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIddhesh Chaube</title>
+    <link rel="stylesheet" href="styleh.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+  </head>
+  <body>
+    <nav id="desktop-nav">
+      <div class="logo">Siddhesh Chaube</div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="#Home"></a>Home</li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="logo">Siddhesh Chaube</div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
-        <nav>
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section class="hero" id="home">
-            <img src="backfield.png" alt="My Photo" class="profile-pic">
-            <div class="glassmorphism" ondblclick="this.style.opacity='0'">
-                <h1>Welcome to My Portfolio</h1>
-                <p>Hello! I'm Siddesh Chaube, a passionate and innovative developer with a knack for turning ideas into reality through code. With a solid foundation in various tech stacks and a portfolio of diverse projects, I specialize in creating efficient and scalable solutions.<br><br>
-
-                    Expertise:<br><br>
-                    Python & Python Flask: Building robust backend systems and RESTful APIs.<br><br>
-                    
-                    MongoDB: Leveraging NoSQL databases for dynamic and scalable applications.<br><br>
-                    
-                    Java & Kotlin: Crafting powerful applications for both web and mobile platforms.<br><br>
-                    
-                    SQL: Designing and managing 
-                    
-                     database structures<br><br><br>
-                    Let's Connect:<br><br>
-                    I'm always excited to collaborate on new and challenging projects. Feel free to explore my portfolio and get in touch if you have any exciting opportunities or just want to talk tech!<br><br>
-                    ""so if you double click on the texts it will disappear and you can see the background images and to see text again click on my name again to refresh the page and it will appear again""</p>
+        <div class="menu-links">
+          <li><a href="#Home" onclick="toggleMenu()">Home</a></li>
+          <li><a href="#about" onclick="toggleMenu()">About</a></li>
+          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </div>
+      </div>
+    </nav>
+    <section id="profile">
+      <div class="section__pic-container">
+        <img src="./assets/Backfield.png" alt="Siddhesh Chaube profile pic" />
+      </div>
+      <div class="section__text">
+        <p class="section__text__p1">Hello, This is Siddhesh Chaube</p>
+        <h1 class="title">Siddhesh Chaube</h1>
+        <p class="section__text__p2">A passionate software computing student with a focus on developing efficient, scalable solutions.</p>
+        <div class="btn-container">
+<!--           <button
+            class="btn btn-color-2"
+            onclick="window.open('./assets/dd.pdf')"
+          >
+            Download CV
+          </button> -->
+          <button class="btn btn-color-1" onclick="location.href='./#contact'">
+            Contact Info
+          </button>
+        </div>
+        <div id="socials-container">
+          <img
+            src="./assets/linkedin.png"
+            alt="My LinkedIn profile"
+            class="icon"
+            onclick="location.href='https://in.linkedin.com/in/siddhesh-chaube'"
+          />
+          <img
+            src="./assets/github.png"
+            alt="My Github profile"
+            class="icon"
+            onclick="location.href='https://github.com/ogsiddhesh/ogsiddhesh'"
+          />
+        </div>
+      </div>
+    </section>
+    <section id="about">
+      <p class="section__text__p1">Get To Know More</p>
+      <h1 class="title">About Me</h1>
+      <div class="section-container">
+        <div class="section__pic-container">
+          <img
+            src="./assets/Backfield.png"
+            alt="Profile picture"
+            class="about-pic"
+          />
+        </div>
+        <div class="about-details-container">
+          <div class="about-containers">
+            <div class="details-container">
+              <img
+                src="./assets/experience.png"
+                alt="Experience icon"
+                class="icon"
+              />
+              <h3>Experience</h3>
+              <p>2+ years <br />Software Development</p>
+            </div>
+            <div class="details-container">
+              <img
+                src="./assets/education.png"
+                alt="Education icon"
+                class="icon"
+              />
+              <h3>Education</h3>
+              <p>B.S. Bachelors Degree<br /></p>
+            </div>
+          </div>
+          <div class="text-container">
+            <p>
+              A passionate software  computing student with a focus on developing efficient, scalable solutions. I have been programming for the past 5 years, tackling complex coding problems and optimizing algorithms. I'm excited to bring my skills and passion to real-world projects.</p> 
+            </p>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#experience'"
+      />
+    </section>
+    <section id="experience">
+      <p class="section__text__p1">Explore My</p>
+      <h1 class="title">Experience</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container">
+            <h2 class="experience-sub-title">Skills</h2>
+            <div class="article-container">
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Python & Python Flask<h3>
+                  <p>Intermediate</p>
                 </div>
-        </section>
-        <section class="contact">
-            <h2>Contact Me</h2>
-            <form id="contactForm">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" required></textarea>
-                <button type="submit">Send</button>
-            </form>
-        </section>
-    </main>
-    <footer>
-        <p>&copy;  Crafted with passion by Siddhesh Chaube</p>
-        <div class="social-links">
-            <a href="https://github.com/ogsiddhesh/ogsiddhesh">GitHub</a>
-            <a href="https://in.linkedin.com/in/siddhesh-chaube">LinkedIn</a>
-            <a href="https://www.instagram.com/og_siddhesh?igsh=bTc0djZzcDYwbGt3">Instagram</a>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>QA testing</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3> web vulnerability assessment</h3>
+                  <p>Basic</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>MongoDB</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>HTML</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>CSS</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="details-container">
+            <h2 class="experience-sub-title">Skills</h2>
+            <div class="article-container">
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>PostgreSQL</h3>
+                  <p>Basic</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Java</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Kotlin</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Git</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+            </div>
+          </div>
         </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#projects'"
+      />
+    </section>
+    <section id="projects">
+      <p class="section__text__p1">Browse My Recent</p>
+      <h1 class="title">Projects</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/project-1.png"
+                alt="Project 1"
+                class="project-img"
+              />
+            </div>
+            <h2 class="experience-sub-title project-title">Project One</h2>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/'"
+              >
+                Github
+              </button>
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/'"
+              >
+                Live Demo
+              </button>
+            </div>
+          </div>
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/project-2.png"
+                alt="Project 2"
+                class="project-img"
+              />
+            </div>
+            <h2 class="experience-sub-title project-title">Project Two</h2>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/'"
+              >
+                Github
+              </button>
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/'"
+              >
+                Live Demo
+              </button>
+            </div>
+          </div>
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/project-3.png"
+                alt="Project 3"
+                class="project-img"
+              />
+            </div>
+            <h2 class="experience-sub-title project-title">Project Three</h2>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/ogsiddhesh/ogsiddhesh'"
+              >
+                Github
+              </button>
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/ogsiddhesh/ogsiddhesh'"
+              >
+                Live Demo
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#contact'"
+      />
+    </section>
+    <section id="contact">
+      <p class="section__text__p1">Get in Touch</p>
+      <h1 class="title">Contact Me</h1>
+      <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+          <img
+            src="./assets/email.png"
+            alt="Email icon"
+            class="icon contact-icon email-icon"
+          />
+          <p><a href="mailto:examplemail@gmail.com">siddhesh@siddhesh.site</a></p>
+        </div>
+        <div class="contact-info-container">
+          <img
+            src="./assets/linkedin.png"
+            alt="LinkedIn icon"
+            class="icon contact-icon"
+          />
+          <p><a href="https://in.linkedin.com/in/siddhesh-chaube">LinkedIn</a></p>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <nav>
+        <div class="nav-links-container">
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+      <p>Copyright &#169; 2023 Siddhesh Chaube. All Rights Reserved.</p>
     </footer>
-    <div class="glow-bg" id="glowBg"></div>
-    <div class="popup" id="popup">
-        Thank you for submitting your details! will get back to you shortly.
-    </div>
-    <script>
-        
-        document.addEventListener('mousemove', function (e) {
-            const glowBg = document.getElementById('glowBg');
-            glowBg.style.left = e.pageX + 'px';
-            glowBg.style.top = e.pageY + 'px';
-            glowBg.style.opacity = 1;
-        });
-
-        document.addEventListener('mouseout', function () {
-            const glowBg = document.getElementById('glowBg');
-            glowBg.style.opacity = 0;
-        });
-
-        
-        const form = document.getElementById('contactForm');
-        const popup = document.getElementById('popup');
-        
-        form.addEventListener('submit', function (e) {
-            e.preventDefault(); 
-            popup.classList.add('show'); 
-            setTimeout(() => {
-                popup.classList.remove('show'); 
-                form.reset(); 
-            }, 3000);
-        });
-    </script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
