@@ -2,6 +2,8 @@
 <html lang="en">
   <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JP6EESQF5C"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -10,12 +12,75 @@
       </script>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device
+    
+    
+    -width, initial-scale=1.0" />
     <title>Siddhesh Chaube</title>
     <link rel="stylesheet" href="styleh.css" />
     <link rel="stylesheet" href="mediaqueries.css" />
     <style>
-      
+        
+        #contactForm button {
+        font-weight: bold;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        padding: 0.8rem 2rem;
+        border-radius: 8px;
+        border: none;
+        box-shadow: 0 4px #d09b00; 
+        background-color: #f0b400; 
+        color: white;
+        cursor: pointer;
+      }
+
+      #contactForm button:hover {
+        background-color: #ffc929; 
+      }
+
+      #contactForm button:active {
+        transform: translateY(4px); 
+        box-shadow: 0 0 #d09b00; 
+      }
+        .contact-form-container {
+        max-width: 600px;
+        margin: 2rem auto;
+      }
+      #contactForm {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      #contactForm input,
+      #contactForm textarea {
+        width: 100%;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        border: rgb(53, 53, 53) 0.1rem solid;
+        font-size: 1rem;
+        box-sizing: border-box;
+      }
+      .form-row {
+        display: flex;
+        gap: 1rem;
+      }
+      .form-row input {
+        width: 50%;
+      }
+      #form-status {
+        text-align: center;
+        margin-top: 1rem;
+        font-weight: bold;
+        min-height: 20px;
+      }
+      @media (max-width: 600px) {
+        .form-row {
+          flex-direction: column;
+        }
+        .form-row input {
+          width: 100%;
+        }
+      }
+
       .job-description {
         
         max-height: 0;
@@ -390,6 +455,19 @@
     <section id="contact">
       <p class="section__text__p1">Get in Touch</p>
       <h1 class="title">Contact Me</h1>
+      <div class="contact-form-container">
+        <form id="contactForm">
+          <div class="form-row">
+            <input type="text" name="FirstName" placeholder="First Name *" required>
+            <input type="text" name="LastName" placeholder="Last Name">
+          </div>
+          <input type="tel" name="Phone" placeholder="Phone *" required>
+          <input type="email" name="Email" placeholder="Email *" required>
+          <textarea name="Message" placeholder="Message" rows="5"></textarea>
+          <button type="submit" class="btn btn-color-2">Submit</button>
+        </form>
+        <p id="form-status"></p>
+      </div>
       <div class="contact-info-upper-container">
         <div class="contact-info-container">
           <img
@@ -424,6 +502,42 @@
     </footer>
     <script src="script.js"></script>
     <script>
+        const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('form-status');
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxJRAhdjM6M9HhOcZsWcSAyT9XzNTGGv1mn5GSvrBJX0J73oco3MtMaGjP0ZGatknv8/exec'; // Make sure your URL is here!
+
+    contactForm.addEventListener('submit', e => {
+      e.preventDefault();
+      // Show a "sending" message in the old spot
+      formStatus.textContent = 'Sending...';
+
+      fetch(scriptURL, { method: 'POST', body: new FormData(contactForm)})
+        .then(response => response.json())
+        .then(data => {
+          formStatus.textContent = ''; // Clear the "sending" text
+          if (data.result === 'success') {
+            Swal.fire({
+              title: 'Success!',
+              text: 'Your message has been sent.',
+              icon: 'success',
+              confirmButtonColor: '#f0b400'
+            });
+            contactForm.reset();
+          } else {
+            throw new Error(data.error);
+          }
+        })
+        .catch(error => {
+          formStatus.textContent = ''; // Clear the "sending" text
+          Swal.fire({
+            title: 'Oops...',
+            text: 'Something went wrong! Please try again.',
+            icon: 'error',
+            confirmButtonColor: '#d33'
+          });
+          console.error('Error!', error.message);
+        });
+    }); 
       // Wait for the document to be fully loaded
       document.addEventListener("DOMContentLoaded", function() {
         // Get all the elements with the class 'experience-entry'
@@ -440,6 +554,5 @@
     </script>
   </body>
 </html>
-
 
 
