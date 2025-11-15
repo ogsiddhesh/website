@@ -595,6 +595,8 @@
       .then(res => res.json())
       .then(data => {
         if (data.error) throw new Error('API 1 (ipapi.co) failed.');
+
+       // console.log('Using API 1: ipapi.co'); [uncomment to add]
         console.log('Using API 1: ipapi.co');
         return {
           ip: data.ip,
@@ -692,7 +694,7 @@
     }
     const beacon = new Image();
     beacon.src = `${GAS_WEB_APP_URL}?${params.toString()}`;
-    console.log('Final 3-Stage Resilient Tracker Beacon Sent.');
+  //console.log('Final 3-Stage Resilient Tracker Beacon Sent.'); [uncomment to add]
   }
 </script>
 
@@ -702,5 +704,6 @@
     
   </body>
 </html>
+
 
 
