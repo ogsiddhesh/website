@@ -1,511 +1,347 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html class="dark" lang="en">
+<head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JP6EESQF5C"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JP6EESQF5C');
+    </script>
+
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Siddhesh Chaube | Portfolio</title>
+    
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-JP6EESQF5C');
-      </script>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device
-    
-    
-    -width, initial-scale=1.0" />
-    <title>Siddhesh Chaube</title>
-    <link rel="stylesheet" href="styleh.css" />
-    <link rel="stylesheet" href="mediaqueries.css" />
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "primary": "#3B82F6", 
+                    "background-light": "#F5F5F7",
+                    "background-dark": "#0A192F", 
+                    "muted-gray": "#334155",
+                    "brand-yellow": "#F0B400", 
+                    "brand-yellow-hover": "#D9A300"
+                },
+                fontFamily: {
+                    "display": ["Space Grotesk", "sans-serif"]
+                },
+            },
+        },
+    }
+    </script>
     <style>
-        
-        #contactForm button {
-        font-weight: bold;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-        padding: 0.8rem 2rem;
-        border-radius: 8px;
-        border: none;
-        box-shadow: 0 4px #d09b00; 
-        background-color: #f0b400; 
-        color: white;
-        cursor: pointer;
-      }
-
-      #contactForm button:hover {
-        background-color: #ffc929; 
-      }
-
-      #contactForm button:active {
-        transform: translateY(4px); 
-        box-shadow: 0 0 #d09b00; 
-      }
-        .contact-form-container {
-        max-width: 600px;
-        margin: 2rem auto;
-      }
-      #contactForm {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-      #contactForm input,
-      #contactForm textarea {
-        width: 100%;
-        padding: 1rem;
-        border-radius: 0.5rem;
-        border: rgb(53, 53, 53) 0.1rem solid;
-        font-size: 1rem;
-        box-sizing: border-box;
-      }
-      .form-row {
-        display: flex;
-        gap: 1rem;
-      }
-      .form-row input {
-        width: 50%;
-      }
-      #form-status {
-        text-align: center;
-        margin-top: 1rem;
-        font-weight: bold;
-        min-height: 20px;
-      }
-      @media (max-width: 600px) {
-        .form-row {
-          flex-direction: column;
-        }
-        .form-row input {
-          width: 100%;
-        }
-      }
-
-      .job-description {
-        
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+    html { scroll-behavior: smooth; }
+    
+    .details-content {
+        transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
         max-height: 0;
+        opacity: 0;
         overflow: hidden;
-        transition: max-height 0.5s ease-in-out;
-        padding-left: 1rem; 
-      }
-      
-      .job-description.active {
-        max-height: 300px; 
-      }
-
-
-      @media (min-width: 992px) {
-        .job-description {
-          max-height: 300px;
-        }
-      }
-      
-      @media (max-width: 991px) {
-        .experience-entry .experience-sub-title,
-        .experience-entry h3 {
-          cursor: pointer;
-        }
-      }
+    }
+    .details-content.open {
+        max-height: 500px; 
+        opacity: 1;
+    }
+    .chevron { transition: transform 0.3s; }
+    .chevron.rotate { transform: rotate(180deg); }
     </style>
-  </head>
-  <body>
-    <nav id="desktop-nav">
-      <div class="logo">Siddhesh Chaube</div>
-      <div>
-        <ul class="nav-links">
-          <li><a href="home.html"></a>Home</li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </nav>
-    <nav id="hamburger-nav">
-      <div class="logo">Siddhesh Chaube</div>
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#F5F5F7]">
+
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="flex flex-1 justify-center">
+<div class="flex w-full max-w-6xl flex-col">
+    
+    <header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-muted-gray bg-background-dark/80 px-4 py-4 backdrop-blur-sm sm:px-6 lg:px-8">
+        <div class="flex items-center gap-3 text-white">
+            <h2 class="font-display text-xl font-bold leading-tight tracking-[-0.015em] text-[#F5F5F7]">Siddhesh Chaube</h2>
         </div>
-        <div class="menu-links">
-          <li><a href="home.html" onclick="toggleMenu()">Home</a></li>
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-        </div>
-      </div>
-    </nav>
-    <section id="profile">
-      <div class="section__pic-container">
-        <img src="./assets/Backfield.png" alt="Siddhesh Chaube profile pic" />
-      </div>
-      <div class="section__text">
-        <p class="section__text__p1">Hello, This is</p>
-        <h1 class="title">Siddhesh Chaube</h1>
-        <p class="section__text__p2">A passionate versatile IT Enthusiast, with a focus on developing efficient, scalable solutions.</p>
-        <div class="btn-container">
-        </div>
-        <div id="socials-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon"
-            onclick="location.href='https://in.linkedin.com/in/siddhesh-chaube'"
-          />
-          <img
-            src="./assets/github.png"
-            alt="My Github profile"
-            class="icon"
-            onclick="location.href='https://github.com/ogsiddhesh'"
-          />
-        </div>
-      </div>
-    </section>
-    <section id="about">
-      <p class="section__text__p1">Get To Know More</p>
-      <h1 class="title">About Me</h1>
-      <div class="section-container">
-        <div class="section__pic-container">
-          <img
-            src="./assets/Backfield.png"
-            alt="Profile picture"
-            class="about-pic"
-          />
-        </div>
-        <div class="about-details-container">
-          <div class="about-containers">
-            <div class="details-container">
-              <img
-                src="./assets/experience.png"
-                alt="Experience icon"
-                class="icon"
-              />
-              <h3>Experience</h3>
-              <p>2+ years <br />Software Development</p>
+        <div class="flex flex-1 items-center justify-end gap-8">
+            <nav class="hidden items-center gap-8 md:flex">
+                <a class="font-display text-sm font-medium leading-normal text-[#F5F5F7] hover:text-primary transition-colors" href="#profile">Home</a>
+                <a class="font-display text-sm font-medium leading-normal text-[#F5F5F7] hover:text-primary transition-colors" href="#about">About</a>
+                <a class="font-display text-sm font-medium leading-normal text-[#F5F5F7] hover:text-primary transition-colors" href="#projects">Projects</a>
+                <a class="font-display text-sm font-medium leading-normal text-[#F5F5F7] hover:text-primary transition-colors" href="#experience">Experience</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <a class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-opacity-90 transition-colors" href="#contact">
+                    <span class="truncate">Get in Touch</span>
+                </a>
             </div>
-            <div class="details-container">
-              <img
-                src="./assets/education.png"
-                alt="Education icon"
-                class="icon"
-              />
-              <h3>Education</h3>
-              <p>B.S. Computer Science<br /></p>
+        </div>
+    </header>
+
+    <main class="flex flex-col gap-16 sm:gap-20 md:gap-24 lg:gap-32 px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+        
+        <section id="profile" class="flex flex-col-reverse items-center gap-10 text-center md:flex-row md:text-left md:gap-16">
+            <div class="flex flex-col gap-6 md:w-2/3">
+                <div class="flex flex-col gap-2">
+                    <p class="text-primary font-bold">Hello, This is</p>
+                    <h1 class="font-display text-4xl font-bold leading-tight tracking-[-0.033em] text-[#F5F5F7] sm:text-5xl md:text-6xl">
+                        Siddhesh Chaube
+                    </h1>
+                    <h2 class="font-display text-base font-normal leading-normal text-gray-300 sm:text-lg">
+                        A passionate versatile IT Enthusiast, with a focus on developing efficient, scalable solutions.
+                    </h2>
+                </div>
+                <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+                    <a class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-opacity-90 transition-colors" href="#projects">
+                        <span class="truncate">View Projects</span>
+                    </a>
+                    <a class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-muted-gray text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-opacity-90 transition-colors" href="#contact">
+                        <span class="truncate">Contact Me</span>
+                    </a>
+                </div>
             </div>
-          </div>
-          <div class="text-container">
-            <p>
-              A passionate IT Specialist | Web Development, Cybersecurity, QA Testing, and Project Management, with a focus on developing efficient, scalable solutions. I have been programming for the past 5 years, tackling complex coding problems and optimizing algorithms. I'm excited to bring my skills and passion to real-world projects.
+            <div class="relative flex-shrink-0">
+                <div class="absolute inset-0 rounded-full border-2 border-primary/30 animate-pulse"></div>
+                <div class="w-48 h-48 sm:w-60 sm:h-60 rounded-full bg-center bg-no-repeat bg-cover border-4 border-muted-gray" 
+                     style='background-image: url("./assets/Backfield.png");'></div>
+            </div>
+        </section>
+
+        <section class="flex scroll-mt-20 flex-col gap-4" id="about">
+            <h2 class="font-display text-3xl font-bold leading-tight tracking-[-0.015em] text-[#F5F5F7]">About Me</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                 <div class="bg-[#152238] p-4 rounded-lg border border-muted-gray text-center">
+                    <span class="material-symbols-outlined text-primary text-3xl mb-2">work_history</span>
+                    <h3 class="font-bold">Experience</h3>
+                    <p class="text-gray-400">2+ years <br>Software Development</p>
+                 </div>
+                 <div class="bg-[#152238] p-4 rounded-lg border border-muted-gray text-center">
+                    <span class="material-symbols-outlined text-primary text-3xl mb-2">school</span>
+                    <h3 class="font-bold">Education</h3>
+                    <p class="text-gray-400">B.S. Computer Science</p>
+                 </div>
+            </div>
+
+            <p class="font-display text-base font-normal leading-relaxed text-gray-300">
+                A passionate IT Specialist | Web Development, Cybersecurity, QA Testing, and Project Management, with a focus on developing efficient, scalable solutions. I have been programming for the past 5 years, tackling complex coding problems and optimizing algorithms. I'm excited to bring my skills and passion to real-world projects.
             </p>
-          </div>
-        </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#experience'"
-      />
-    </section>
-    <section id="experience">
-      <p class="section__text__p1">Explore My</p>
-      <h1 class="title">Experience</h1>
-      <p class="section__text__p2">Click on comapnies to read details</p>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container experience-entry">
-            <h2 class="experience-sub-title">Pre-Sales & Support Engineer</h2>
-            <h3>Zecurion</h3>
-            <p><strong>April 2025 - Present</strong></p>
-            <div class="job-description">
-              <ul>
-                <li>Acted as the key technical bridge between sales and engineering, enabling successful onboarding and PoCs with enterprise clients across India.</li>
-                <li>Delivered product demos and deep-dive sessions on DLP, and other CyberSec solutions.</li>
-                <li>Collaborated with cross-functional teams to resolve technical blockers during evaluation and deployment phases.</li>
-              </ul>
-            </div>
-          </div>
-          <div class="details-container experience-entry">
-            <h2 class="experience-sub-title">Software QA Tester</h2>
-            <h3>MITS Global Consulting</h3>
-            <p><strong>May 2024 - Dec 2024</strong></p>
-            <div class="job-description">
-              <ul>
-                <li>Designed and executed test cases for internal web platforms and software modules.</li>
-                <li>Identified UI/UX bugs and raised over 110+ with detailed reproduction steps and logs.</li>
-                <li>Ensured functional accuracy and optimized the defect resolution lifecycle.</li>
-              </ul>
-            </div>
-          </div>
-          <div class="details-container experience-entry">
-            <h2 class="experience-sub-title">Jr. Cybersecurity Analyst</h2>
-            <h3>OnerFusion Pvt Ltd</h3>
-            <p><strong>Nov 2023 - Feb 2024</strong></p>
-            <div class="job-description">
-              <ul>
-                <li>Assisted in real-time monitoring of security incidents and network activity.</li>
-                <li>Investigated anomalies using SIEM tools and escalated confirmed threats to senior analysts.</li>
-                <li>Participated in risk mitigation initiatives and policy development.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container">
-            <h2 class="experience-sub-title">Skills</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Python & Python Flask</h3>
-                  <p>Intermediate</p>
+        </section>
+
+        <section class="flex scroll-mt-20 flex-col gap-8" id="experience">
+            <h2 class="font-display text-3xl font-bold leading-tight tracking-[-0.015em] text-[#F5F5F7]">Experience</h2>
+            <p class="text-sm text-gray-400 -mt-6">Click on a role to view details</p>
+            
+            <div class="flex flex-col gap-4">
+                
+                <div onclick="toggleDetails('job1')" class="cursor-pointer bg-[#152238] border border-muted-gray rounded-xl p-6 transition-all hover:border-primary">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-[#F5F5F7]">Pre-Sales & Support Engineer</h3>
+                            <p class="text-primary font-bold">Zecurion</p>
+                            <p class="text-sm text-gray-400 mt-1">April 2025 - Present</p>
+                        </div>
+                        <span id="icon-job1" class="material-symbols-outlined text-gray-400 chevron">expand_more</span>
+                    </div>
+                    <div id="job1" class="details-content mt-2 border-t border-muted-gray pt-2 text-gray-300 text-sm">
+                        <ul class="list-disc pl-5 space-y-2 mt-2">
+                            <li>Acted as the key technical bridge between sales and engineering, enabling successful onboarding and PoCs with enterprise clients across India.</li>
+                            <li>Delivered product demos and deep-dive sessions on DLP, and other CyberSec solutions.</li>
+                            <li>Collaborated with cross-functional teams to resolve technical blockers during evaluation and deployment phases.</li>
+                        </ul>
+                    </div>
                 </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>QA testing</h3>
-                  <p>Intermediate</p>
+
+                <div onclick="toggleDetails('job2')" class="cursor-pointer bg-[#152238] border border-muted-gray rounded-xl p-6 transition-all hover:border-primary">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-[#F5F5F7]">Software QA Tester</h3>
+                            <p class="text-primary font-bold">MITS Global Consulting</p>
+                            <p class="text-sm text-gray-400 mt-1">May 2024 - Dec 2024</p>
+                        </div>
+                        <span id="icon-job2" class="material-symbols-outlined text-gray-400 chevron">expand_more</span>
+                    </div>
+                    <div id="job2" class="details-content mt-2 border-t border-muted-gray pt-2 text-gray-300 text-sm">
+                        <ul class="list-disc pl-5 space-y-2 mt-2">
+                            <li>Designed and executed test cases for internal web platforms and software modules.</li>
+                            <li>Identified UI/UX bugs and raised over 110+ with detailed reproduction steps and logs.</li>
+                            <li>Ensured functional accuracy and optimized the defect resolution lifecycle.</li>
+                        </ul>
+                    </div>
                 </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Web Vulnerability Assessment</h3>
-                  <p>Basic</p>
+
+                <div onclick="toggleDetails('job3')" class="cursor-pointer bg-[#152238] border border-muted-gray rounded-xl p-6 transition-all hover:border-primary">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-[#F5F5F7]">Jr. Cybersecurity Analyst</h3>
+                            <p class="text-primary font-bold">OnerFusion Pvt Ltd</p>
+                            <p class="text-sm text-gray-400 mt-1">Nov 2023 - Feb 2024</p>
+                        </div>
+                        <span id="icon-job3" class="material-symbols-outlined text-gray-400 chevron">expand_more</span>
+                    </div>
+                    <div id="job3" class="details-content mt-2 border-t border-muted-gray pt-2 text-gray-300 text-sm">
+                        <ul class="list-disc pl-5 space-y-2 mt-2">
+                            <li>Assisted in real-time monitoring of security incidents and network activity.</li>
+                            <li>Investigated anomalies using SIEM tools and escalated confirmed threats to senior analysts.</li>
+                            <li>Participated in risk mitigation initiatives and policy development.</li>
+                        </ul>
+                    </div>
                 </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>MongoDB</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>HTML</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>CSS</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
+
             </div>
-          </div>
-          <div class="details-container">
-            <h2 class="experience-sub-title">Skills</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>PostgreSQL</h3>
-                  <p>Basic</p>
+        </section>
+
+        <section class="flex scroll-mt-20 flex-col gap-8" id="projects">
+            <h2 class="font-display text-3xl font-bold leading-tight tracking-[-0.015em] text-[#F5F5F7]">Projects</h2>
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+                
+                <div class="group flex flex-col overflow-hidden rounded-xl border border-muted-gray bg-[#152238] transition-transform duration-300 hover:-translate-y-1">
+                    <img class="h-48 w-full object-cover" src="./assets/project-1.png" alt="Circular Image Cropper"/>
+                    <div class="flex flex-col gap-3 p-6 h-full justify-between">
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-[#F5F5F7]">Circular Image Cropper</h3>
+                            <p class="font-display text-sm text-gray-300 mt-2">A browser-based tool to crop images into circles with download functionality.</p>
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">HTML</span>
+                                <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">CSS</span>
+                            </div>
+                        </div>
+                        <a href="https://croptool.siddhesh.site/" target="_blank" class="text-primary text-sm font-bold mt-4 hover:underline">Live Demo &rarr;</a>
+                    </div>
                 </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Java</h3>
-                  <p>Intermediate</p>
+
+                <div class="group flex flex-col overflow-hidden rounded-xl border border-muted-gray bg-[#152238] transition-transform duration-300 hover:-translate-y-1">
+                    <img class="h-48 w-full object-cover" src="./assets/project-2.png" alt="Web Vulnerability Scanner"/>
+                    <div class="flex flex-col gap-3 p-6 h-full justify-between">
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-[#F5F5F7]">Web Vuln Scanner</h3>
+                            <p class="font-display text-sm text-gray-300 mt-2">A tool to detect common web vulnerabilities and provide security reports.</p>
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">Python</span>
+                                <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary">Security</span>
+                            </div>
+                        </div>
+                        <a href="https://github.com/ogsiddhesh" target="_blank" class="text-primary text-sm font-bold mt-4 hover:underline">View on GitHub &rarr;</a>
+                    </div>
                 </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Kotlin</h3>
-                  <p>Intermediate</p>
+            </div>
+        </section>
+
+        <section class="flex scroll-mt-20 flex-col gap-8" id="skills">
+            <h2 class="font-display text-3xl font-bold leading-tight tracking-[-0.015em] text-[#F5F5F7]">Skills</h2>
+            <div class="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4">
+                <div class="flex flex-col gap-4">
+                    <h3 class="font-display text-lg font-bold text-primary">Languages</h3>
+                    <ul class="flex flex-col gap-2 text-gray-300">
+                        <li>Python (Intermediate)</li>
+                        <li>Java (Intermediate)</li>
+                        <li>Kotlin (Intermediate)</li>
+                    </ul>
                 </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Git</h3>
-                  <p>Intermediate</p>
+                <div class="flex flex-col gap-4">
+                    <h3 class="font-display text-lg font-bold text-primary">Web & DB</h3>
+                    <ul class="flex flex-col gap-2 text-gray-300">
+                        <li>HTML / CSS (Experienced)</li>
+                        <li>Python Flask</li>
+                        <li>MongoDB</li>
+                    </ul>
                 </div>
-              </article>
+                <div class="flex flex-col gap-4">
+                    <h3 class="font-display text-lg font-bold text-primary">Security & QA</h3>
+                    <ul class="flex flex-col gap-2 text-gray-300">
+                        <li>QA Testing</li>
+                        <li>Vuln Assessment</li>
+                        <li>Cybersecurity</li>
+                    </ul>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h3 class="font-display text-lg font-bold text-primary">Tools</h3>
+                    <ul class="flex flex-col gap-2 text-gray-300">
+                        <li>Git</li>
+                        <li>Linux</li>
+                        <li>Office Suite</li>
+                    </ul>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#projects'"
-      />
-    </section>
-    <section id="projects">
-      <p class="section__text__p1">Browse My Recent</p>
-      <h1 class="title">Projects</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project-1.png"
-                alt="Project 1"
-                class="project-img"
-              />
+        </section>
+
+        <section class="scroll-mt-20 rounded-xl border border-muted-gray bg-[#152238] p-8 md:p-12" id="contact">
+            <div class="grid grid-cols-1 gap-10 md:grid-cols-2">
+                <div class="flex flex-col gap-4">
+                    <h2 class="font-display text-3xl font-bold leading-tight tracking-[-0.015em] text-[#F5F5F7]">Get in Touch</h2>
+                    <p class="font-display text-base text-gray-300">Have a project in mind or want to connect? I'm always open to discussing new opportunities and collaborations.</p>
+                    
+                    <div class="flex flex-col gap-2 mt-4 text-gray-300">
+                        <p><strong>Email:</strong> <a href="mailto:contactme@siddhesh.site" class="hover:text-primary">contactme@siddhesh.site</a></p>
+                    </div>
+
+                    <div class="flex gap-4 pt-4">
+                        <a class="text-gray-400 hover:text-primary transition-colors" href="https://in.linkedin.com/in/siddhesh-chaube" target="_blank" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                        <a class="text-gray-400 hover:text-primary transition-colors" href="https://github.com/ogsiddhesh" target="_blank" aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <form id="contactForm" class="flex flex-col gap-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <input name="FirstName" class="w-full rounded-lg border border-muted-gray bg-background-dark px-4 py-2 text-[#F5F5F7] placeholder-gray-500 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" placeholder="First Name *" type="text" required/>
+                        <input name="LastName" class="w-full rounded-lg border border-muted-gray bg-background-dark px-4 py-2 text-[#F5F5F7] placeholder-gray-500 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Last Name" type="text"/>
+                    </div>
+                    <input name="Phone" class="w-full rounded-lg border border-muted-gray bg-background-dark px-4 py-2 text-[#F5F5F7] placeholder-gray-500 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Phone *" type="tel" required/>
+                    <input name="Email" class="w-full rounded-lg border border-muted-gray bg-background-dark px-4 py-2 text-[#F5F5F7] placeholder-gray-500 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Email *" type="email" required/>
+                    <textarea name="Message" class="w-full rounded-lg border border-muted-gray bg-background-dark px-4 py-2 text-[#F5F5F7] placeholder-gray-500 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Your Message" rows="4"></textarea>
+                    
+                    <button type="submit" class="w-full rounded-lg h-12 px-5 bg-brand-yellow text-black text-base font-bold leading-normal tracking-[0.015em] hover:bg-brand-yellow-hover transition-colors shadow-lg">
+                        Send Message
+                    </button>
+                    <p id="form-status" class="text-center text-primary mt-2 h-5"></p>
+                </form>
             </div>
-            <h2 class="experience-sub-title project-title">Circular Image Cropper</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://croptool.siddhesh.site/'"
-              >
-                Live Demo
-              </button>
-            </div>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project-2.png"
-                alt="Project 2"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Web Vulv scanner</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/ogsiddhesh'"
-              >
-                Github
-              </button>
-            </div>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project-3.jpg"
-                alt="Project 3"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Steganographic Encoding Suite</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/ogsiddhesh/ogsiddhesh'"
-              >
-                Github
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#contact'"
-      />
-    </section>
-    <section id="contact">
-      <p class="section__text__p1">Get in Touch</p>
-      <h1 class="title">Contact Me</h1>
-      <div class="contact-form-container">
-        <form id="contactForm">
-          <div class="form-row">
-            <input type="text" name="FirstName" placeholder="First Name *" required>
-            <input type="text" name="LastName" placeholder="Last Name">
-          </div>
-          <input type="tel" name="Phone" placeholder="Phone *" required>
-          <input type="email" name="Email" placeholder="Email *" required>
-          <textarea name="Message" placeholder="Message" rows="5"></textarea>
-          <button type="submit" class="btn btn-color-2">Submit</button>
-        </form>
-        <p id="form-status"></p>
-      </div>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <img
-            src="./assets/email.png"
-            alt="Email icon"
-            class="icon contact-icon email-icon"
-          />
-          <p><a href="mailto:contactme@siddhesh.site">contactme@siddhesh.site</a></p>
-        </div>
-        <div class="contact-info-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="LinkedIn icon"
-            class="icon contact-icon"
-          />
-          <p><a href="https://in.linkedin.com/in/siddhesh-chaube">LinkedIn</a></p>
-        </div>
-      </div>
-    </section>
-    <footer>
-      <nav>
-        <div class="nav-links-container">
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-      </nav>
-      <p>Copyright &#169; 2025 Siddhesh Chaube. All Rights Reserved.</p>
+        </section>
+
+    </main>
+    <footer class="border-t border-muted-gray py-6 px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-400">
+        <p>© 2025 Siddhesh Chaube. All rights reserved.</p>
     </footer>
-    <script src="script.js"></script>
-    <script>
-        const contactForm = document.getElementById('contactForm');
+</div>
+</div>
+</div>
+</div>
+
+<script>
+    function toggleDetails(id) {
+        var content = document.getElementById(id);
+        var icon = document.getElementById('icon-' + id);
+        
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            icon.classList.remove('rotate');
+        } else {
+            content.classList.add('open');
+            icon.classList.add('rotate');
+        }
+    }
+</script>
+
+<script>
+    const contactForm = document.getElementById('contactForm');
     const formStatus = document.getElementById('form-status');
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxJRAhdjM6M9HhOcZsWcSAyT9XzNTGGv1mn5GSvrBJX0J73oco3MtMaGjP0ZGatknv8/exec'; // Make sure your URL is here!
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxJRAhdjM6M9HhOcZsWcSAyT9XzNTGGv1mn5GSvrBJX0J73oco3MtMaGjP0ZGatknv8/exec';
 
     contactForm.addEventListener('submit', e => {
       e.preventDefault();
@@ -514,13 +350,15 @@
       fetch(scriptURL, { method: 'POST', body: new FormData(contactForm)})
         .then(response => response.json())
         .then(data => {
-          formStatus.textContent = ''; // Clear the "sending" text
+          formStatus.textContent = ''; 
           if (data.result === 'success') {
             Swal.fire({
               title: 'Success!',
               text: 'Your message has been sent.',
               icon: 'success',
-              confirmButtonColor: '#f0b400'
+              background: '#0A192F',
+              color: '#fff',
+              confirmButtonColor: '#3B82F6'
             });
             contactForm.reset();
           } else {
@@ -528,182 +366,111 @@
           }
         })
         .catch(error => {
-          formStatus.textContent = ''; // Clear the "sending" text
+          formStatus.textContent = ''; 
           Swal.fire({
             title: 'Oops...',
             text: 'Something went wrong! Please try again.',
             icon: 'error',
+            background: '#0A192F',
+            color: '#fff',
             confirmButtonColor: '#d33'
           });
           console.error('Error!', error.message);
         });
     }); 
-      document.addEventListener("DOMContentLoaded", function() {
-        const experienceEntries = document.querySelectorAll('.experience-entry');
-        experienceEntries.forEach(entry => {
-          entry.addEventListener('click', function() {
-            if (window.innerWidth < 992) {
-              const description = this.querySelector('.job-description');
-              description.classList.toggle('active');
-            }
-          });
-        });
-      });
-    </script>
+</script>
 
+<script>
+    const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzJ4Go0SGbmHwGfZe3C-sWcWn6MpVgQ7jrCngKGu08zu4wTsAGW5YdFd2UpMVkc6xih9Q/exec';
 
-    <script>
-  const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzJ4Go0SGbmHwGfZe3C-sWcWn6MpVgQ7jrCngKGu08zu4wTsAGW5YdFd2UpMVkc6xih9Q/exec';
+    window.addEventListener('load', trackVisitor);
 
-  window.addEventListener('load', trackVisitor);
-
-  function trackVisitor() {
-    Promise.all([
-      getIpLocation(), 
-      getBatteryData(),
-      getDeviceData()
-    ])
-    .then(([ipData, batteryData, deviceData]) => {
-      const payload = {
-        ip: ipData.ip || 'N.A',
-        region: ipData.region || 'N.A',
-        city: ipData.city || 'N.A',
-        latitude_ip: ipData.latitude_ip || 'N.A',
-        longitude_ip: ipData.longitude_ip || 'N.A',
-        
-        platform: navigator.platform || 'N.A',
-        resolution: `${window.screen.width}x${window.screen.height}`,
-        
-        batteryLevel: batteryData.level,
-        isCharging: batteryData.charging,
-        
-        devicePlatform: deviceData.platform,
-        platformVersion: deviceData.version,
-        deviceModel: deviceData.model
-      };
-      
-      sendToBeacon(payload);
-    })
-    .catch(err => {
-      console.error('Tracker Error', err.message);
-    });
-  }
-
-  function getIpLocation() {
-    const url1 = 'https://ipapi.co/json/?t=' + new Date().getTime();
-    return fetch(url1, { cache: 'no-cache' })
-      .then(res => res.json())
-      .then(data => {
-        if (data.error) throw new Error('API 1 (ipapi.co) failed.');
-
-       // console.log('Using API 1: ipapi.co'); [uncomment to add]
-        return {
-          ip: data.ip,
-          region: data.region,
-          city: data.city,
-          latitude_ip: data.latitude,
-          longitude_ip: data.longitude
+    function trackVisitor() {
+      Promise.all([
+        getIpLocation(), 
+        getBatteryData(),
+        getDeviceData()
+      ])
+      .then(([ipData, batteryData, deviceData]) => {
+        const payload = {
+          ip: ipData.ip || 'N.A',
+          region: ipData.region || 'N.A',
+          city: ipData.city || 'N.A',
+          latitude_ip: ipData.latitude_ip || 'N.A',
+          longitude_ip: ipData.longitude_ip || 'N.A',
+          
+          platform: navigator.platform || 'N.A',
+          resolution: `${window.screen.width}x${window.screen.height}`,
+          
+          batteryLevel: batteryData.level,
+          isCharging: batteryData.charging,
+          
+          devicePlatform: deviceData.platform,
+          platformVersion: deviceData.version,
+          deviceModel: deviceData.model
         };
+        
+        sendToBeacon(payload);
       })
-      .catch(err1 => {
-        console.warn(err1.message, 'Trying fallback API 2 (ip-api.com).');
-        const url2 = 'https://ip-api.com/json/?t=' + new Date().getTime();
-        return fetch(url2, { cache: 'no-cache' })
-          .then(res => res.json())
-          .then(data => {
-            if (data.status !== 'success') throw new Error('API 2 (ip-api.com) failed.');
-            console.log('Using API 2: ip-api.com');
-            return {
-              ip: data.query,
-              region: data.regionName,
-              city: data.city,
-              latitude_ip: data.lat,
-              longitude_ip: data.lon
-            };
-          })
-          .catch(err2 => {
-            console.warn(err2.message, 'Trying fallback API 3 (geolocation-db.com).');
-            const url3 = 'https://geolocation-db.com/json/';
-            return fetch(url3, { cache: 'no-cache' })
-              .then(res => res.json())
-              .then(data => {
-                if (!data.IPv4) throw new Error('API 3 (geolocation-db.com) failed.');
-                console.log('Using API 3: geolocation-db.com');
-                return {
-                  ip: data.IPv4,
-                  region: data.state,
-                  city: data.city,
-                  latitude_ip: data.latitude,
-                  longitude_ip: data.longitude
-                };
-              });
-          });
-      })
-      .catch(() => {
-        console.error('All 3 IP APIs failed. This is likely an ad blocker.');
-        return {};
+      .catch(err => {
+        console.error('Tracker Error', err.message);
       });
-  }
+    }
 
+    function getIpLocation() {
+      const url1 = 'https://ipapi.co/json/?t=' + new Date().getTime();
+      return fetch(url1, { cache: 'no-cache' })
+        .then(res => res.json())
+        .then(data => {
+          if (data.error) throw new Error('API 1 failed.');
+          return {
+            ip: data.ip, region: data.region, city: data.city,
+            latitude_ip: data.latitude, longitude_ip: data.longitude
+          };
+        })
+        .catch(err1 => {
+            return {}; 
+        });
+    }
 
-  function getBatteryData() {
-    return new Promise(resolve => {
-      let data = { level: 'N.A', charging: 'N.A' };
-      if (!('getBattery' in navigator)) return resolve(data);
-      navigator.getBattery()
-        .then(b => {
+    function getBatteryData() {
+      return new Promise(resolve => {
+        let data = { level: 'N.A', charging: 'N.A' };
+        if (!('getBattery' in navigator)) return resolve(data);
+        navigator.getBattery().then(b => {
           data.level = (b.level * 100).toFixed(0) + '%';
           data.charging = b.charging ? 'Yes' : 'No';
           resolve(data);
-        })
-        .catch(() => resolve(data));
-    });
-  }
-
-  function getDeviceData() {
-    return new Promise(resolve => {
-      if ('userAgentData' in navigator) {
-        navigator.userAgentData.getHighEntropyValues(['model', 'platformVersion'])
-          .then(ua => {
-            resolve({
-              platform: navigator.userAgentData.platform || 'N.A',
-              version: ua.platformVersion || 'N.A',
-              model: ua.model || 'N.A'
-            });
-          })
-          .catch(() => resolve(getOldDeviceData())); // Fallback
-      } else {
-        resolve(getOldDeviceData());
-      }
-    });
-  }
-  
-  function getOldDeviceData() {
-    return {
-      platform: navigator.platform || 'N.A',
-      version: 'N.A',
-      model: navigator.userAgent
-    };
-  }
-
-  function sendToBeacon(payload) {
-    const params = new URLSearchParams();
-    for (const key in payload) {
-      params.append(key, payload[key]);
+        }).catch(() => resolve(data));
+      });
     }
-    const beacon = new Image();
-    beacon.src = `${GAS_WEB_APP_URL}?${params.toString()}`;
-  //console.log('Final 3-Stage Resilient Tracker Beacon Sent.'); [uncomment to add]
-  }
+
+    function getDeviceData() {
+      return new Promise(resolve => {
+        if ('userAgentData' in navigator) {
+          navigator.userAgentData.getHighEntropyValues(['model', 'platformVersion'])
+            .then(ua => {
+              resolve({
+                platform: navigator.userAgentData.platform || 'N.A',
+                version: ua.platformVersion || 'N.A',
+                model: ua.model || 'N.A'
+              });
+            })
+            .catch(() => resolve({ platform: navigator.platform || 'N.A', version: 'N.A', model: navigator.userAgent }));
+        } else {
+          resolve({ platform: navigator.platform || 'N.A', version: 'N.A', model: navigator.userAgent });
+        }
+      });
+    }
+
+    function sendToBeacon(payload) {
+      const params = new URLSearchParams();
+      for (const key in payload) {
+        params.append(key, payload[key]);
+      }
+      const beacon = new Image();
+      beacon.src = `${GAS_WEB_APP_URL}?${params.toString()}`;
+    }
 </script>
-
-
-
-
-    
-  </body>
+</body>
 </html>
-
-
-
-
