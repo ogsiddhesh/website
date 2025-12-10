@@ -28,9 +28,9 @@
         theme: {
             extend: {
                 colors: {
-                    "primary": "#3B82F6", 
+                    "primary": "#3B82F6", // Blue
                     "background-light": "#F5F5F7",
-                    "background-dark": "#0A192F", 
+                    "background-dark": "#0A192F", // Deep Navy
                     "muted-gray": "#334155",
                     "brand-yellow": "#F0B400", 
                     "brand-yellow-hover": "#D9A300"
@@ -38,6 +38,9 @@
                 fontFamily: {
                     "display": ["Space Grotesk", "sans-serif"]
                 },
+                boxShadow: {
+                    'neon': '0 0 15px rgba(59, 130, 246, 0.6)', // The Glow Effect
+                }
             },
         },
     }
@@ -46,6 +49,7 @@
     .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
     html { scroll-behavior: smooth; }
     
+    /* Transition for the accordion effect */
     .details-content {
         transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
         max-height: 0;
@@ -58,6 +62,22 @@
     }
     .chevron { transition: transform 0.3s; }
     .chevron.rotate { transform: rotate(180deg); }
+
+    /* Mobile Menu Transition */
+    #mobile-menu {
+        transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        overflow: hidden;
+    }
+    #mobile-menu.hidden-menu {
+        max-height: 0;
+        opacity: 0;
+        pointer-events: none;
+    }
+    #mobile-menu.visible-menu {
+        max-height: 400px; /* Adjust if needed */
+        opacity: 1;
+        pointer-events: auto;
+    }
     </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-[#F5F5F7]">
@@ -67,22 +87,39 @@
 <div class="flex flex-1 justify-center">
 <div class="flex w-full max-w-6xl flex-col">
     
-    <header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-muted-gray bg-background-dark/80 px-4 py-4 backdrop-blur-sm sm:px-6 lg:px-8">
-        <div class="flex items-center gap-3 text-white">
-            <h2 class="font-display text-xl font-bold leading-tight tracking-[-0.015em] text-[#F5F5F7]">Siddhesh Chaube</h2>
-        </div>
-        <div class="flex flex-1 items-center justify-end gap-8">
-            <nav class="hidden items-center gap-8 md:flex">
-                <a class="font-display text-sm font-medium leading-normal text-[#F5F5F7] hover:text-primary transition-colors" href="#profile">Home</a>
-                <a class="font-display text-sm font-medium leading-normal text-[#F5F5F7] hover:text-primary transition-colors" href="#about">About</a>
-                <a class="font-display text-sm font-medium leading-normal text-[#F5F5F7] hover:text-primary transition-colors" href="#projects">Projects</a>
-                <a class="font-display text-sm font-medium leading-normal text-[#F5F5F7] hover:text-primary transition-colors" href="#experience">Experience</a>
-            </nav>
-            <div class="flex items-center gap-4">
-                <a class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-opacity-90 transition-colors" href="#contact">
-                    <span class="truncate">Get in Touch</span>
-                </a>
+    <header class="sticky top-0 z-50 flex flex-col justify-center whitespace-nowrap border-b border-solid border-muted-gray bg-background-dark/95 px-4 py-4 backdrop-blur-sm sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between w-full">
+            <div class="flex items-center gap-3 text-white">
+                <h2 class="font-display text-xl font-bold leading-tight tracking-[-0.015em] text-[#F5F5F7]">Siddhesh Chaube</h2>
             </div>
+            
+            <div class="flex flex-1 items-center justify-end gap-8 hidden md:flex">
+                <nav class="flex items-center gap-8">
+                    <a class="font-display text-sm font-medium leading-normal text-[#F5F5F7] hover:text-primary transition-colors" href="#profile">Home</a>
+                    <a class="font-display text-sm font-medium leading-normal text-[#F5F5F7] hover:text-primary transition-colors" href="#about">About</a>
+                    <a class="font-display text-sm font-medium leading-normal text-[#F5F5F7] hover:text-primary transition-colors" href="#projects">Projects</a>
+                    <a class="font-display text-sm font-medium leading-normal text-[#F5F5F7] hover:text-primary transition-colors" href="#experience">Experience</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <a class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-opacity-90 transition-colors" href="#contact">
+                        <span class="truncate">Get in Touch</span>
+                    </a>
+                </div>
+            </div>
+
+            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none" onclick="toggleMobileMenu()">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden-menu flex flex-col gap-4 mt-4 md:hidden border-t border-muted-gray pt-4">
+            <a class="font-display text-lg font-medium text-[#F5F5F7] hover:text-primary pl-2" href="#profile" onclick="toggleMobileMenu()">Home</a>
+            <a class="font-display text-lg font-medium text-[#F5F5F7] hover:text-primary pl-2" href="#about" onclick="toggleMobileMenu()">About</a>
+            <a class="font-display text-lg font-medium text-[#F5F5F7] hover:text-primary pl-2" href="#projects" onclick="toggleMobileMenu()">Projects</a>
+            <a class="font-display text-lg font-medium text-[#F5F5F7] hover:text-primary pl-2" href="#experience" onclick="toggleMobileMenu()">Experience</a>
+            <a class="flex w-full cursor-pointer items-center justify-center rounded-lg h-12 px-4 bg-primary text-white text-base font-bold hover:bg-opacity-90 transition-colors mt-2" href="#contact" onclick="toggleMobileMenu()">
+                Get in Touch
+            </a>
         </div>
     </header>
 
@@ -119,12 +156,12 @@
             <h2 class="font-display text-3xl font-bold leading-tight tracking-[-0.015em] text-[#F5F5F7]">About Me</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                 <div class="bg-[#152238] p-4 rounded-lg border border-muted-gray text-center">
+                 <div class="bg-[#152238] p-4 rounded-lg border border-muted-gray text-center transition-all duration-300 hover:border-primary hover:shadow-neon">
                     <span class="material-symbols-outlined text-primary text-3xl mb-2">work_history</span>
                     <h3 class="font-bold">Experience</h3>
                     <p class="text-gray-400">2+ years <br>Software Development</p>
                  </div>
-                 <div class="bg-[#152238] p-4 rounded-lg border border-muted-gray text-center">
+                 <div class="bg-[#152238] p-4 rounded-lg border border-muted-gray text-center transition-all duration-300 hover:border-primary hover:shadow-neon">
                     <span class="material-symbols-outlined text-primary text-3xl mb-2">school</span>
                     <h3 class="font-bold">Education</h3>
                     <p class="text-gray-400">B.S. Computer Science</p>
@@ -137,12 +174,14 @@
         </section>
 
         <section class="flex scroll-mt-20 flex-col gap-8" id="experience">
-            <h2 class="font-display text-3xl font-bold leading-tight tracking-[-0.015em] text-[#F5F5F7]">Experience</h2>
-            <p class="text-sm text-gray-400 -mt-6">Click on a role to view details</p>
+            <div>
+                <h2 class="font-display text-3xl font-bold leading-tight tracking-[-0.015em] text-[#F5F5F7]">Experience</h2>
+                <p class="text-sm text-gray-400">Click on a role to view details</p>
+            </div>
             
             <div class="flex flex-col gap-4">
                 
-                <div onclick="toggleDetails('job1')" class="cursor-pointer bg-[#152238] border border-muted-gray rounded-xl p-6 transition-all hover:border-primary">
+                <div onclick="toggleDetails('job1')" class="cursor-pointer bg-[#152238] border border-muted-gray rounded-xl p-6 transition-all duration-300 hover:border-primary hover:shadow-neon">
                     <div class="flex justify-between items-center">
                         <div>
                             <h3 class="font-display text-xl font-bold text-[#F5F5F7]">Pre-Sales & Support Engineer</h3>
@@ -160,7 +199,7 @@
                     </div>
                 </div>
 
-                <div onclick="toggleDetails('job2')" class="cursor-pointer bg-[#152238] border border-muted-gray rounded-xl p-6 transition-all hover:border-primary">
+                <div onclick="toggleDetails('job2')" class="cursor-pointer bg-[#152238] border border-muted-gray rounded-xl p-6 transition-all duration-300 hover:border-primary hover:shadow-neon">
                     <div class="flex justify-between items-center">
                         <div>
                             <h3 class="font-display text-xl font-bold text-[#F5F5F7]">Software QA Tester</h3>
@@ -178,7 +217,7 @@
                     </div>
                 </div>
 
-                <div onclick="toggleDetails('job3')" class="cursor-pointer bg-[#152238] border border-muted-gray rounded-xl p-6 transition-all hover:border-primary">
+                <div onclick="toggleDetails('job3')" class="cursor-pointer bg-[#152238] border border-muted-gray rounded-xl p-6 transition-all duration-300 hover:border-primary hover:shadow-neon">
                     <div class="flex justify-between items-center">
                         <div>
                             <h3 class="font-display text-xl font-bold text-[#F5F5F7]">Jr. Cybersecurity Analyst</h3>
@@ -203,7 +242,7 @@
             <h2 class="font-display text-3xl font-bold leading-tight tracking-[-0.015em] text-[#F5F5F7]">Projects</h2>
             <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
                 
-                <div class="group flex flex-col overflow-hidden rounded-xl border border-muted-gray bg-[#152238] transition-transform duration-300 hover:-translate-y-1">
+                <div class="group flex flex-col overflow-hidden rounded-xl border border-muted-gray bg-[#152238] transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-neon">
                     <img class="h-48 w-full object-cover" src="./assets/project-1.png" alt="Circular Image Cropper"/>
                     <div class="flex flex-col gap-3 p-6 h-full justify-between">
                         <div>
@@ -218,7 +257,7 @@
                     </div>
                 </div>
 
-                <div class="group flex flex-col overflow-hidden rounded-xl border border-muted-gray bg-[#152238] transition-transform duration-300 hover:-translate-y-1">
+                <div class="group flex flex-col overflow-hidden rounded-xl border border-muted-gray bg-[#152238] transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-neon">
                     <img class="h-48 w-full object-cover" src="./assets/project-2.png" alt="Web Vulnerability Scanner"/>
                     <div class="flex flex-col gap-3 p-6 h-full justify-between">
                         <div>
@@ -314,9 +353,6 @@
             </div>
         </section>
 
-
-        
-
     </main>
     <footer class="border-t border-muted-gray py-6 px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-400">
         <p>© 2025 Siddhesh Chaube. All rights reserved.</p>
@@ -327,6 +363,19 @@
 </div>
 
 <script>
+    // Mobile Menu Toggle Script
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        if (menu.classList.contains('hidden-menu')) {
+            menu.classList.remove('hidden-menu');
+            menu.classList.add('visible-menu');
+        } else {
+            menu.classList.remove('visible-menu');
+            menu.classList.add('hidden-menu');
+        }
+    }
+
+    // Accordion Script
     function toggleDetails(id) {
         var content = document.getElementById(id);
         var icon = document.getElementById('icon-' + id);
@@ -477,5 +526,3 @@
 </script>
 </body>
 </html>
-
-
